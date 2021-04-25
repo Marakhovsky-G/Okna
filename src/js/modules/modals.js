@@ -24,7 +24,7 @@ const modals = () => {
 
         modalOpen(modalSelector);
       });
-    })
+    });
 
     close.addEventListener('click', () => {
       modalClose(modalSelector);
@@ -38,7 +38,7 @@ const modals = () => {
   }
 
   function showModalByTime(selector, time) {
-    setTimeout(() => {modalOpen(selector)}, time);
+    setTimeout(() => {modalOpen(selector);}, time);
   }
 
   bindModal('.popup_engineer_btn', '.popup_engineer', '.popup_engineer .popup_close');
