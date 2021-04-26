@@ -1,3 +1,4 @@
+import {animateCSS} from '../services/animate';
 
 const images = () => {
   const imgPopup = document.createElement('div'),
@@ -26,6 +27,7 @@ const images = () => {
     if (target && target.matches('div.popup_pic')) {
       imgPopup.style.display = 'none';
     }
+    animateCSS('.popup_pic', 'fadeIn');
   });
 };
 

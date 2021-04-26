@@ -1,3 +1,4 @@
+import {animateCSS} from '../services/animate';
 
 const tabs = (headerSelector, tabSelector, contentSelector, activeClass, display = 'block') => {
   const header = document.querySelector(headerSelector),
@@ -34,6 +35,10 @@ const tabs = (headerSelector, tabSelector, contentSelector, activeClass, display
         }
       });
     }
+  });
+
+  content.forEach(item => {
+    item.classList.add('animate__animated', 'animate__fadeIn');
   });
 };
 

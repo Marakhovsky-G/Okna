@@ -1,3 +1,4 @@
+import {animateCSS} from '../services/animate';
 
 const modals = () => {
 
@@ -20,6 +21,7 @@ const modals = () => {
     document.querySelector(modalSelector).style.display = 'block';
     document.body.style.overflow = 'hidden';
     document.body.style.marginRight = `${calcScroll()}px`;
+    animateCSS(modalSelector, 'fadeInDown');
   }
 
   function modalClose(modalSelector) {
