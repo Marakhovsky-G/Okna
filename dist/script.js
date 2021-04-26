@@ -18047,7 +18047,7 @@ var images = function images() {
   var imgPopup = document.createElement('div'),
       workSection = document.querySelector('.works'),
       bigImage = document.createElement('img');
-  imgPopup.classList.add('popup');
+  imgPopup.classList.add('popup_pic');
   workSection.appendChild(imgPopup);
   imgPopup.style.justifyContent = 'center';
   imgPopup.style.alignItems = 'center';
@@ -18063,7 +18063,7 @@ var images = function images() {
       bigImage.setAttribute('src', path);
     }
 
-    if (target && target.matches('div.popup')) {
+    if (target && target.matches('div.popup_pic')) {
       imgPopup.style.display = 'none';
     }
   });
@@ -18087,14 +18087,29 @@ __webpack_require__.r(__webpack_exports__);
 
 
 var modals = function modals() {
+  function calcScroll() {
+    // вычисление ширины скрола
+    var div = document.createElement('div');
+    div.style.width = '50px';
+    div.style.height = '50px';
+    div.style.overflowY = 'scroll';
+    div.style.visibility = 'hidden';
+    document.body.appendChild(div);
+    var scrollWidth = div.offsetWidth - div.clientWidth;
+    div.remove();
+    return scrollWidth;
+  }
+
   function modalOpen(modalSelector) {
     document.querySelector(modalSelector).style.display = 'block';
     document.body.style.overflow = 'hidden';
+    document.body.style.marginRight = "".concat(calcScroll(), "px");
   }
 
   function modalClose(modalSelector) {
     document.querySelector(modalSelector).style.display = 'none';
     document.body.style.overflow = '';
+    document.body.style.marginRight = '0px';
   }
 
   function bindModal(triggerSelector, modalSelector, closeSelector) {

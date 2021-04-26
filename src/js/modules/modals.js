@@ -1,14 +1,31 @@
 
 const modals = () => {
 
+  function calcScroll() {  // вычисление ширины скрола
+    let div = document.createElement('div');
+
+    div.style.width = '50px';
+    div.style.height = '50px';
+    div.style.overflowY = 'scroll';
+    div.style.visibility = 'hidden';
+
+    document.body.appendChild(div);
+    let scrollWidth = div.offsetWidth - div.clientWidth;
+    div.remove();
+
+    return scrollWidth;
+  }
+
   function modalOpen(modalSelector) {
     document.querySelector(modalSelector).style.display = 'block';
     document.body.style.overflow = 'hidden';
+    document.body.style.marginRight = `${calcScroll()}px`;
   }
 
   function modalClose(modalSelector) {
     document.querySelector(modalSelector).style.display = 'none';
     document.body.style.overflow = '';
+    document.body.style.marginRight = '0px';
   }
 
   function bindModal(triggerSelector, modalSelector, closeSelector, closeClickOverlay = true) {
