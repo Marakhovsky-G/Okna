@@ -68,7 +68,18 @@ const modals = () => {
   }
 
   function showModalByTime(selector, time) {
-    setTimeout(() => {modalOpen(selector);}, time);
+    setTimeout(() => {
+      let display;
+      document.querySelectorAll('[data-modal]').forEach(item => {
+        if (getComputedStyle(item).display !== 'none') {
+          display = 'block';
+        }
+      });
+
+      if (!display) {
+        modalOpen(selector);
+      }
+    }, time);
   }
 
   bindModal('.popup_engineer_btn', '.popup_engineer', '.popup_engineer .popup_close');
